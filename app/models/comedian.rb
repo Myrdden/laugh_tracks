@@ -1,2 +1,1 @@
-class Comedian < ApplicationRecord
-end
+class Comedian < ApplicationRecord; end
