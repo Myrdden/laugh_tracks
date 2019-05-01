@@ -19,21 +19,22 @@
 #right {float: right}
 body {background: #333}
 
-#topBar {background: #333; height: 75px; margin: -8px -8px 0px -8px; position: fixed; width: 100%; height: auto}
+#topBar {background: #333; margin: -8px -8px 0px -8px; position: fixed; width: 100%; height: auto}
 #search {margin: 25px 0 0 0px; background: white}
-#inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
-#inputBar::placeholder {color: white}
+.inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
+.inputBar::placeholder {color: white}
 #searchButton {display: none;}
 .buttonCircle:hover {fill: #555}
 .querySelect {float: left; color:white; background:none; margin: -5px 0px 0px 5px}
 .queryButton {}
 #newHeader {font: 30pt SegoeUI, Noto Sans, Arial, sans-serif; color: white; margin: 15px 15px 0px 5px; float: left}
 #statisticsHeader {font: 30pt SegoeUI, Noto Sans, Arial, sans-serif; color: white; margin: 0px 12%}
+#addingHeader {font: 25pt SegoeUI, Noto Sans, Arial, sans-serif; color: white; margin: 0px 0px 15px 0px}
 #otherStatisticsHeader {font: 30pt SegoeUI, Noto Sans, Arial, sans-serif; color: white; margin: 15px 0px 0px 5px; float: left}
 .statisticsEntry {font: 20pt SegoeUI, Noto Sans, Arial, sans-serif; color: white; margin: 10px 12%}
 
 
-#topBuffer {background: #333; height: 75px; margin: -8px -8px 0px -8px;}
+.topBuffer {background: #333; height: 97px; margin: -8px -8px 0px -8px;}
 #title {padding: 18px 30px 18px 18px; font: 30pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; float: left}
 #list {}
 #grad {background: linear-gradient(to top, orange, yellow, green, cyan, blue, violet); height: 100%; position: absolute; width: 100%;}
@@ -50,7 +51,9 @@ body {background: #333}
 @keyframes unrotate {from{transform: rotate(90deg)} to{transform: rotate(0deg)}}
 .specialsCircle:hover {fill: rgba(255,255,255,0.2)}
 .specialsContainer {margin: 5px}
-.hidden {animation: hide 0.6 ease both}
-.unhidden {animation: unhide 0.6 ease both}
+/* .hidden {animation: hide 0.6 ease both} */
+/* .unhidden {animation: unhide 0.6 ease both} */
+.hidden {display: none}
+.unhidden {display: block}
 @keyframes unhide {from{transform: translateY(-100%)} to{}}
 @keyframes hide {from{} to{transform: translateY(-100%)}}

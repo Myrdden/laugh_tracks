@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20190501015642) do
   end
 
   create_table "specials", force: :cascade do |t|
-    t.integer "comedian_id"
+    t.string "comedian"
     t.string "name"
     t.integer "runtime"
     t.string "date"

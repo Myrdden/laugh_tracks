@@ -14,7 +14,7 @@
       </a>
       <div style="width: auto; height: 75px; background: none; float: left; overflow: hidden;">
         <form id="search">
-          <input id="inputBar" type="text" name="query" placeholder="Search..." value="">
+          <input class="inputBar" type="text" name="query" placeholder="Search..." value="">
           <div class="querySelect">
             <input class="queryButton" type="radio" name="queryType" value="name" checked>Name</input><br/>
             <input class="queryButton" type="radio" name="queryType" value="age">Age</input>
@@ -44,7 +44,7 @@
       </div>
       <div style="width: auto; height: 75px; background: none; float: left; overflow: hidden;">
         <div style="background: white; width: 2px; height: 60px; float: left; margin: 12px 0px 0px 5px"></div>
-        <button id="statisticsButton" style="float: left; margin: 25px 15px 0px 15px; background: none; border: none">
+        <button id="statisticsButton" style="float: left; margin: 25px 15px 0px 15px; background: none; border: none; outline: none">
           <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
            <g transform="translate(.14376 -291.64)">
             <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
@@ -54,7 +54,7 @@
         </button>
         <p id="otherStatisticsHeader">Statistics</p>
       </div>
-      <div id="statistics" style="background: none; margin: 20px 0px 0px 0px; overflow: auto; width: 100%">
+      <div id="statistics" class="hidden" style="background: none; margin: 20px 97px 0px 0px; overflow: auto; width: 100%;">
         <p id="statisticsHeader">Statistics</p>
         <div style="background: white; width: 80%; height: 2px; margin: 0px 10%"></div>
         <p class="statisticsEntry">Average Age: <%=@averageAge%></p>
@@ -65,7 +65,7 @@
         </p>
       </div>
     </div>
-    <div id="topBuffer"></div>
+    <div class="topBuffer"></div>
     <div id="list">
       <%i = 0%>
       <div id="left">
@@ -79,7 +79,7 @@
             <p class="origin">Currently lives in <%=comedian.home%></p>
           </div>
           <div class="photo">
-            <img src="/images/comedians/<%=comedian.image_path%>" alt="<%=comedian.name%>" style="max-width: 100%; height: auto">
+            <img src="<%=comedian.image_path%>" alt="<%=comedian.name%>" style="max-width: 100%; height: auto">
           </div>
           </div>
           <button id="sb<%=i%>" class="specialsButton">
@@ -96,13 +96,13 @@
             <div id="sc<%=i%>" class="specialsContainer">
               <ul>
                 <%@specials[comedian.name].each do |special|%>
-                  <li><%=special.name%></li>
+                  <li><%=special.name%>, <%=special.date%>, <%=special.runtime%> mins.</li>
                 <%end%>
               </ul>
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7; i += 1%>
+        <%bg += 1; bg = 0 if bg > 6; i += 1%>
         <%end%>
       </div>
       <div id="mid">
@@ -139,7 +139,7 @@
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7; i += 1%>
+        <%bg += 1; bg = 0 if bg > 6; i += 1%>
         <%end%>
       </div>
       <div id="right">
@@ -176,11 +176,26 @@
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7; i += 1%>
+        <%bg += 1; bg = 0 if bg > 6; i += 1%>
         <%end%>
       </div>
     </div>
 
-    <script src="application.js"></script>
+    <script>
+      document.getElementById("statisticsButton").addEventListener("click", showStatistics);
+      function showStatistics()
+      { if (document.getElementById("statisticsButton").classList.contains("rotated"))
+        { document.getElementById("statisticsButton").classList.add("unrotated")
+          document.getElementById("statisticsButton").classList.remove("rotated")
+          document.getElementById("statistics").classList.add("hidden")
+          document.getElementById("statistics").classList.remove("unhidden")
+        } else
+        { document.getElementById("statisticsButton").classList.add("rotated")
+          document.getElementById("statisticsButton").classList.remove("unrotated")
+          document.getElementById("statistics").classList.add("unhidden")
+          document.getElementById("statistics").classList.remove("hidden")
+        }
+      }
+    </script>
   </body>
 </html>
