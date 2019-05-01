@@ -1,6 +1,10 @@
 Comedian.destroy_all
 
-Comedian.create(name: 'Chuck Testa', age: 904, home: 'Earth', birthdate: '1 Apr. 1492', birthplace: 'Hell')
+Comedian.create(name: 'Chuck Testa', age: 904, home: 'Earth', birthdate: '1 Apr. 1492', birthplace: 'Hell', image_path: 'chuck.jpeg')
+Special.create(comedian: 'Chuck Testa', name: 'Special #1', runtime: 5)
+Special.create(comedian: 'Chuck Testa', name: 'Special #2', runtime: 5)
+Special.create(comedian: 'Chuck Testa', name: 'Special #3', runtime: 5)
+Special.create(comedian: 'Chuck Testa', name: 'Special #4', runtime: 5)
 Comedian.create(name: 'Steve-O', age: 11, home: 'Yes')
 Comedian.create(name: 'Alf', age: 42, home: 'Cracker Barrel', birthdate: '6 6 6', birthplace: 'Your house')
 Comedian.create(name: 'Bobert Barold', age: 8000, home: 'the Moon')

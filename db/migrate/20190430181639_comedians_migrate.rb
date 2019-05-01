@@ -6,6 +6,7 @@ class ComediansMigrate < ActiveRecord::Migration[5.1]
       t.string :home
       t.string :birthdate
       t.string :birthplace
+      t.string :image_path
     end
   end
 end

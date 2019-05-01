@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190501015642) do
     t.string "home"
     t.string "birthdate"
     t.string "birthplace"
+    t.string "image_path"
   end
 
   create_table "specials", force: :cascade do |t|

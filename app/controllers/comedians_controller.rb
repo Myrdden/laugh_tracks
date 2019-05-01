@@ -6,12 +6,13 @@ class ComediansController < ApplicationController
       comedians = Comedian.all.order(:name)
     end
     i = 0
-    @comediansLeft = []; @comediansMid = []; @comediansRight = []
+    @comediansLeft = []; @comediansMid = []; @comediansRight = []; @specials = {}
     comedians.each do |x|
+      @specials[x.name] = Special.all.where(:comedian => x.name)
       case i
-      when 0; @comediansLeft << x;
-      when 1; @comediansMid << x;
-      when 2; @comediansRight << x;
+      when 0; @comediansLeft << x
+      when 1; @comediansMid << x
+      when 2; @comediansRight << x
       end
       i += 1; i = 0 if i > 2
     end
