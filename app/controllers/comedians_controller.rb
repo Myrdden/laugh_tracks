@@ -11,6 +11,8 @@ class ComediansController < ApplicationController
     end
     i = 0
     @total = Comedian.all.count
+    @averageAge = comedians.average(:age)
+    @cities = comedians.pluck(:home).uniq
     @comediansLeft = []; @comediansMid = []; @comediansRight = []; @specials = {}
     comedians.each do |x|
       @specials[x.name] = Special.all.where(:comedian => x.name)

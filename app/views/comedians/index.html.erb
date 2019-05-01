@@ -1,26 +1,8 @@
 <html>
-  <head>
-    <script>
-      <%@total.times do |i|%>
-        document.getElementById('sb<%=i%>').addEventListener("click", rotateButton('sb<%=i%>', 'sc<%=i%>'));
-      <%end%>
-      function rotateButton(buttonID, specialsID)
-        {if (document.getElementById(buttonID).classList.contains("rotated"))
-           {document.getElementById(buttonID).classList.add("unrotated");
-            document.getElementById(buttonID).classList.remove("rotated");
-            document.getElementById(specialsID).classList.add("hidden");
-            document.getElementById(specialsID).classList.remove("unhidden");}
-         else
-           {document.getElementById(buttonID).classList.add("rotated");
-            document.getElementById(buttonID).classList.remove("unrotated");
-            document.getElementById(specialsID).classList.add("unhidden");
-            document.getElementById(specialsID).classList.remove("hidden");}}
-    </script>
-  </head>
   <body>
     <div id="topBar">
       <div id="title">Comedians</div>
-      <a href="comedians" style="float: left; margin: 18px 15px">
+      <a href="comedians" style="float: left; margin: 25px 15px">
         <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
          <g transform="translate(.14376 -291.64)" fill="none">
           <circle cx="2.6062" cy="294.39" r="2.5" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
@@ -32,8 +14,10 @@
       </a>
       <form id="search">
         <input id="inputBar" type="text" name="query" placeholder="Search..." value="">
-        <input class="querySelect" type="radio" name="queryType" value="name" checked>Name</input>
-        <input class="querySelect" type="radio" name="queryType" value="age">Age</input>
+        <div class="querySelect">
+          <input class="queryButton" type="radio" name="queryType" value="name" checked>Name</input><br/>
+          <input class="queryButton" type="radio" name="queryType" value="age">Age</input>
+        </div>
         <label style="float: left; margin: 0px 15px">
           <input id="searchButton" type="submit" display="none"/>
           <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
@@ -52,6 +36,26 @@
          </g>
         </svg>
       </a>
+      <div style="background: white; width: 2px; height: 60px; float: left; margin: -7px 0px 0px 5px"></div>
+      <button style="float: left; margin: 0px 15px; background: none; border: none">
+        <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
+         <g transform="translate(.14376 -291.64)">
+          <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
+          <path d="m2.2486 296c-0.086457 0.0865-0.23573 0.0777-0.33331-0.0196-0.097613-0.0975-0.10668-0.24723-0.020154-0.33383l1.2573-1.2578-1.2573-1.2573c-0.086451-0.0865-0.077661-0.23571 0.019637-0.33331 0.048773-0.0488 0.11066-0.0751 0.17105-0.0791 0.060386-4e-3 0.11896 0.0156 0.16226 0.0589l1.2335 1.2335c0.097726 0.10253 0.1523 0.2387 0.15245 0.38034-2.424e-4 0.12267-0.041334 0.24177-0.11679 0.33848z" fill="#fff"/>
+         </g>
+        </svg>
+      </button>
+      <p id="otherStatisticsHeader">Statistics</p>
+      <div style="background: none; margin: 20px 0px 0px 0px; overflow: auto; width: 100%">
+        <p id="statisticsHeader">Statistics</p>
+        <div style="background: white; width: 80%; height: 2px; margin: 0px 10%"></div>
+        <p class="statisticsEntry">Average Age: <%=@averageAge%></p>
+        <p class="statisticsEntry">Cities: <%string = ""; @cities.each do |city|%>
+            <%string << city; string << ", "%>
+          <%end%>
+          <%=string.chomp(', ')%>
+        </p>
+      </div>
     </div>
     <div id="topBuffer"></div>
     <div id="list">
