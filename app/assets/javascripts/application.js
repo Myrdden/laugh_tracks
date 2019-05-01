@@ -12,3 +12,19 @@
 //
 //= require rails-ujs
 //= require_tree .
+
+document.getElementById("statisticsButton").addEventListener("click", showStatistics);
+function showStatistics()
+{ if (document.getElementById("statisticsButton").classList.contains("rotated")
+  { document.getElementById("statisticsButton").classList.add("unrotated")
+    document.getElementById("statisticsButton").classList.remove("rotated")
+    document.getElementById("statistics").classList.add("hidden")
+    document.getElementById("statistics").classList.remove("unhidden")
+  } else
+  { document.getElementById("statisticsButton").classList.add("rotated")
+    document.getElementById("statisticsButton").classList.remove("unrotated")
+    document.getElementById("statistics").classList.add("unhidden")
+    document.getElementById("statistics").classList.remove("hidden")
+  }
+
+}

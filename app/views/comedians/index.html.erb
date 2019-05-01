@@ -28,7 +28,8 @@
           </svg>
         </label>
       </form>
-      <a href="comedians/new" style="float: right; margin: 0px 15px">
+      <div style="background: white; width: 2px; height: 60px; float: left; margin: -7px 0px 0px 5px"></div>
+      <a href="comedians/new" style="float: left; margin: 0px 15px 0px 20px">
         <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
          <g transform="translate(.14376 -291.64)">
           <circle cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
@@ -36,8 +37,9 @@
          </g>
         </svg>
       </a>
+      <p id="newHeader">Add</p>
       <div style="background: white; width: 2px; height: 60px; float: left; margin: -7px 0px 0px 5px"></div>
-      <button style="float: left; margin: 0px 15px; background: none; border: none">
+      <button id="statisticsButton" style="float: left; margin: 0px 15px; background: none; border: none">
         <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
          <g transform="translate(.14376 -291.64)">
           <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
@@ -46,7 +48,7 @@
         </svg>
       </button>
       <p id="otherStatisticsHeader">Statistics</p>
-      <div style="background: none; margin: 20px 0px 0px 0px; overflow: auto; width: 100%">
+      <div id="statistics" style="background: none; margin: 20px 0px 0px 0px; overflow: auto; width: 100%">
         <p id="statisticsHeader">Statistics</p>
         <div style="background: white; width: 80%; height: 2px; margin: 0px 10%"></div>
         <p class="statisticsEntry">Average Age: <%=@averageAge%></p>
@@ -172,5 +174,7 @@
         <%end%>
       </div>
     </div>
+
+    <script src="application.js"></script>
   </body>
 </html>
