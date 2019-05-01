@@ -24,6 +24,7 @@ body {background: #333}
 #inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
 #searchButton {display: none;}
 .buttonCircle:hover {fill: #555}
+.querySelect {float: left}
 #topBuffer {background: #333; height: 75px; margin: -8px -8px 0px -8px;}
 #title {padding: 18px 30px 18px 18px; font: 30pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; float: left}
 #list {}
