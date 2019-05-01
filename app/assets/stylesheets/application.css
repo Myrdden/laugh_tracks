@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+#left, #right, #mid {width: 33.33%;}
+#left, #mid {float: left}
+#right {float: right}
+body {background: #333}
+
+#topBar {background: #333; height: 75px; margin: -8px -8px 0px -8px; position: fixed; width: 100%}
+#search {margin: 18px 0 0 300px; background: white}
+#inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
+#searchButton {display: none;}
+.buttonCircle:hover {fill: #555}
+#topBuffer {background: #333; height: 75px; margin: -8px -8px 0px -8px;}
+#title {padding: 18px 30px 18px 18px; font: 30pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; float: left}
+#list {}
+#grad {background: linear-gradient(to top, orange, yellow, green, cyan, blue, violet); height: 100%; position: absolute; width: 100%;}
+.element {padding: 20px; border: 7.5px solid #333; color: white}
+.info {float: left; width: 58%}
+.photo {float: right; width: 38%}
+.name {font: 24pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: -5px 0px}
+.origin {font: 12pt Segoe UI, Noto Sans, Arial, sans-serif; font-style: italic; color: white; margin: 5px 0px}
+.specials {font: 20pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: 0px 5px; vertical-align: middle}
+.specialsButton {background: none; border:none; padding: 0px; outline: none; margin: 10px 0 5px 0}
+.rotated {animation: rotate 0.6s ease both}
+.unrotated {animation: unrotate 0.6s ease both}
+@keyframes rotate {to{transform: rotate(90deg)}}
+@keyframes unrotate {from{transform: rotate(90deg)} to{transform: rotate(0deg)}}
+.specialsCircle:hover {fill: rgba(255,255,255,0.2)}
+.specialsContainer {margin: 5px}
+.hidden {animation: hide 0.6 ease both}
+.unhidden {animation: unhide 0.6 ease both}
+@keyframes unhide {from{transform: translateY(-100%)} to{}}
+@keyframes hide {from{} to{transform: translateY(-100%)}}

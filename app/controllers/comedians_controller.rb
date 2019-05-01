@@ -1,11 +1,16 @@
 class ComediansController < ApplicationController
   def index
-    if params[:age]
-      comedians = Comedian.all.where(:age => params[:age]).order(:name)
+    if params[:query]
+      if params[:queryType] == "name"
+        comedians = Comedian.all.where(:name => params[:query]).order(:name)
+      elsif params[:queryType] == "age"
+        comedians = Comedian.all.where(:age => params[:query]).order(:name)
+      end
     else
       comedians = Comedian.all.order(:name)
     end
     i = 0
+    @total = Comedian.all.count
     @comediansLeft = []; @comediansMid = []; @comediansRight = []; @specials = {}
     comedians.each do |x|
       @specials[x.name] = Special.all.where(:comedian => x.name)
@@ -17,5 +22,9 @@ class ComediansController < ApplicationController
       i += 1; i = 0 if i > 2
     end
     @backgrounds = ['#c00', '#c60', '#c90', '#cc0', '#cf0', '#39f', '#969', '#606']
+  end
+
+  def create
+
   end
 end

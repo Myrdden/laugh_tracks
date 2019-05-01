@@ -1,39 +1,9 @@
 <html>
   <head>
-    <style>
-      #left, #right, #mid {width: 33.33%;}
-      #left, #mid {float: left}
-      #right {float: right}
-      body {background: #333}
-
-      #topBar {background: #333; height: 75px; margin: -8px -8px 0px -8px; position: fixed; width: 100%}
-      #search {margin: 18px 0 0 300px; background: white}
-      #inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
-      #searchButton {display: none;}
-      #searchButtonCircle:hover {fill: #555}
-      #topBuffer {background: #333; height: 75px; margin: -8px -8px 0px -8px;}
-      #title {padding: 18px; font: 30pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; float: left}
-      #list {}
-      #grad {background: linear-gradient(to top, orange, yellow, green, cyan, blue, violet); height: 100%; position: absolute; width: 100%;}
-      .element {padding: 20px; border: 7.5px solid #333; color: white}
-      .info {float: left; width: 58%}
-      .photo {float: right; width: 38%}
-      .name {font: 24pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: -5px 0px}
-      .origin {font: 12pt Segoe UI, Noto Sans, Arial, sans-serif; font-style: italic; color: white; margin: 5px 0px}
-      .specials {font: 20pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: 0px 5px; vertical-align: middle}
-      .specialsButton {background: none; border:none; padding: 0px; outline: none; margin: 10px 0 5px 0}
-      .rotated {animation: rotate 0.6s ease both}
-      .unrotated {animation: unrotate 0.6s ease both}
-      @keyframes rotate {to{transform: rotate(90deg)}}
-      @keyframes unrotate {from{transform: rotate(90deg)} to{transform: rotate(0deg)}}
-      .specialsCircle:hover {fill: rgba(255,255,255,0.2)}
-      .specialsContainer {margin: 5px}
-      .hidden {animation: hide 0.6 ease both}
-      .unhidden {animation: unhide 0.6 ease both}
-      @keyframes unhide {from{transform: translateY(-100%)} to{}}
-      @keyframes hide {from{} to{transform: translateY(-100%)}}
-    </style>
     <script>
+      <%@total.times do |i|%>
+        document.getElementById('sb<%=i%>').addEventListener("click", rotateButton('sb<%=i%>', 'sc<%=i%>'));
+      <%end%>
       function rotateButton(buttonID, specialsID)
         {if (document.getElementById(buttonID).classList.contains("rotated"))
            {document.getElementById(buttonID).classList.add("unrotated");
@@ -50,25 +20,45 @@
   <body>
     <div id="topBar">
       <div id="title">Comedians</div>
+      <a href="comedians" style="float: left; margin: 18px 15px">
+        <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
+         <g transform="translate(.14376 -291.64)" fill="none">
+          <circle cx="2.6062" cy="294.39" r="2.5" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
+          <g transform="matrix(-.00054972 0 0 -.00054972 6.1244 297.91)" stroke="#000" stroke-linejoin="round" stroke-width="721.96">
+           <path d="m6295 9146c-40-19-286-260-1282-1257l-1232-1234-16-59c-18-61-16-129 5-150 7-7 116-13 343-16l332-5 5-1295c6-1444-1-1325 76-1410 21-23 56-51 78-63 40-22 49-22 542-25l500-3 55 29c39 20 62 41 84 77l30 48 10 1042 27 51c33 63 91 116 154 140 45 17 80 19 394 19s349-2 394-19c63-24 121-77 154-140l27-51 10-1040 25-45c16-28 43-55 74-75l49-30h511c506 0 511 0 552 22 22 12 57 40 78 63 77 85 70-34 76 1410l5 1295 332 5c227 3 336 9 343 16 21 21 23 89 5 150l-16 59-1232 1234c-1336 1337-1275 1281-1387 1281-37 0-71-8-105-24z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="721.96"/>
+          </g>
+         </g>
+        </svg>
+      </a>
       <form id="search">
-        <input id="inputBar" type="text" name="age" placeholder="Search...">
-        <!--Future Dropdown-->
+        <input id="inputBar" type="text" name="query" placeholder="Search..." value="">
+        <input type="radio" name="queryType" value="name" checked>Name</input>
+        <input type="radio" name="queryType" value="age">Age</input>
         <label style="float: left; margin: 0px 15px">
           <input id="searchButton" type="submit" display="none"/>
           <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
             <g transform="translate(.14376 -291.64)">
-              <circle cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5" id="searchButtonCircle"/>
+              <circle cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
               <path d="m3.7421 293.26c-0.38879-0.38878-1.0247-0.38915-1.4135-3.7e-4 -0.32745 0.32746-0.37495 0.8285-0.15081 1.2112l-0.9377 0.9377a0.24982 0.22159 45 0 0-0.0018 2e-3 0.24982 0.22159 45 0 0 0.020086 0.33338 0.24982 0.22159 45 0 0 0.33301 0.0197 0.24982 0.22159 45 0 0 0.0018-2e-3l0.9377-0.93771c0.3827 0.22414 0.88375 0.17665 1.2112-0.1508 0.38878-0.38878 0.38878-1.0243-1.1e-6 -1.4131zm-0.24648 0.24648c0.25537 0.25537 0.25501 0.66444-3.702e-4 0.91981-0.25537 0.25537-0.66261 0.25391-0.91798-1e-3 -0.25537-0.25537-0.2572-0.66298-0.0018-0.91835 0.25537-0.25537 0.6648-0.25537 0.92017 0z" fill="#fff"/>
             </g>
           </svg>
         </label>
       </form>
+      <a href="comedians/new" style="float: right; margin: 0px 15px">
+        <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
+         <g transform="translate(.14376 -291.64)">
+          <circle cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
+          <path d="m2.6049 292.57c-0.1378 2e-4 -0.24963 0.0994-0.2496 0.22169l5.167e-4 1.3472-1.3462-5.1e-4c-0.12229-3e-5 -0.22149 0.11179-0.22169 0.24959-7.998e-5 0.13796 0.099292 0.25007 0.22169 0.25012l1.3467 5.1e-4 5.168e-4 1.3467c5.23e-5 0.1224 0.11215 0.22177 0.25011 0.22169 0.1378-2e-4 0.24963-0.0994 0.2496-0.22169l-5.17e-4 -1.3462 1.3467 5.2e-4c0.12229 3e-5 0.22149-0.1118 0.22169-0.2496 7.99e-5 -0.13796-0.099292-0.25006-0.22169-0.25011l-1.3467-5.2e-4h-5.167e-4v-5.2e-4l-5.168e-4 -1.3472c-5e-5 -0.1224-0.11215-0.22177-0.25011-0.22169z" fill="#fff"/>
+         </g>
+        </svg>
+      </a>
     </div>
     <div id="topBuffer"></div>
     <div id="list">
+      <%i = 0%>
       <div id="left">
         <%bg = 0%>
-        <%@comediansLeft.each_with_index do |comedian, i|%>
+        <%@comediansLeft.each do |comedian|%>
         <div id="elem<%=i%>" class="element" style="background: <%=@backgrounds[bg]%>">
           <div style="overflow: auto">
           <div class="info">
@@ -80,7 +70,7 @@
             <img src="/images/comedians/<%=comedian.image_path%>" alt="<%=comedian.name%>" style="max-width: 100%; height: auto">
           </div>
           </div>
-          <button id="sb<%=i%>" class="specialsButton" onClick="rotateButton('sb<%=i%>', 'sc<%=i%>')">
+          <button id="sb<%=i%>" class="specialsButton">
             <svg width="8.25mm" height="8.25mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
              <g transform="translate(.14376 -291.64)">
               <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
@@ -100,12 +90,12 @@
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7%>
+        <%bg += 1; bg = 0 if bg > 7; i += 1%>
         <%end%>
       </div>
       <div id="mid">
         <%bg = 0%>
-        <%@comediansMid.each_with_index do |comedian, i|%>
+        <%@comediansMid.each do |comedian|%>
         <div id="elem<%=i%>" class="element" style="background: <%=@backgrounds[bg]%>">
           <div style="overflow: auto">
           <div class="info">
@@ -117,7 +107,7 @@
             <img src="/images/comedians/<%=comedian.image_path%>" alt="<%=comedian.name%>" style="max-width: 100%; height: auto">
           </div>
           </div>
-          <button id="sb<%=i%>" class="specialsButton" onClick="rotateButton('sb<%=i%>', 'sc<%=i%>')">
+          <button id="sb<%=i%>" class="specialsButton">
             <svg width="8.25mm" height="8.25mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
              <g transform="translate(.14376 -291.64)">
               <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
@@ -137,12 +127,12 @@
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7%>
+        <%bg += 1; bg = 0 if bg > 7; i += 1%>
         <%end%>
       </div>
       <div id="right">
         <%bg = 0%>
-        <%@comediansRight.each_with_index do |comedian, i|%>
+        <%@comediansRight.each do |comedian|%>
         <div id="elem<%=i%>" class="element" style="background: <%=@backgrounds[bg]%>">
           <div style="overflow: auto">
           <div class="info">
@@ -154,7 +144,7 @@
             <img src="/images/comedians/<%=comedian.image_path%>" alt="<%=comedian.name%>" style="max-width: 100%; height: auto">
           </div>
           </div>
-          <button id="sb<%=i%>" class="specialsButton" onClick="rotateButton('sb<%=i%>', 'sc<%=i%>')">
+          <button id="sb<%=i%>" class="specialsButton">
             <svg width="8.25mm" height="8.25mm" viewBox="0 0 5.5 5.5" style="vertical-align: middle">
              <g transform="translate(.14376 -291.64)">
               <circle class="specialsCircle" cx="2.6062" cy="294.39" r="2.5" fill="none" stroke="#fff" stroke-width=".5"/>
@@ -174,7 +164,7 @@
             </div>
           </div>
         </div>
-        <%bg += 1; bg = 0 if bg > 7%>
+        <%bg += 1; bg = 0 if bg > 7; i += 1%>
         <%end%>
       </div>
     </div>
