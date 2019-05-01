@@ -23,6 +23,8 @@ body {background: #333}
 #search {margin: 25px 0 0 0px; background: white}
 .inputBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
 .inputBar::placeholder {color: white}
+.newBar {height: 45px; background: #555; border: none; padding: 0px 60px 0px 15px; color: white; font: 18pt Segoe UI, Noto Sans, Arial, sans-serif; float: left}
+.newBar::placeholder {color: white}
 #searchButton {display: none;}
 .buttonCircle:hover {fill: #555}
 .querySelect {float: left; color:white; background:none; margin: -5px 0px 0px 5px}

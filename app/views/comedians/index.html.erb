@@ -130,7 +130,7 @@
           <p style="display: inline-block" class="specials">Specials (<%=@specials[comedian.name].count%>)</p>
           <div style="background: white; width: 100%; height: 2px"></div>
           <div style="overflow: hidden">
-            <div id="sc1" class="specialsContainer">
+            <div id="sc<%=i%>" class="specialsContainer">
               <ul>
                 <%@specials[comedian.name].each do |special|%>
                   <li><%=special.name%></li>
@@ -167,7 +167,7 @@
           <p style="display: inline-block" class="specials">Specials (<%=@specials[comedian.name].count%>)</p>
           <div style="background: white; width: 100%; height: 2px"></div>
           <div style="overflow: hidden">
-            <div id="sc1" class="specialsContainer">
+            <div id="sc<%=i%>" class="specialsContainer">
               <ul>
                 <%@specials[comedian.name].each do |special|%>
                   <li><%=special.name%></li>
@@ -194,6 +194,25 @@
           document.getElementById("statisticsButton").classList.remove("unrotated")
           document.getElementById("statistics").classList.add("unhidden")
           document.getElementById("statistics").classList.remove("hidden")
+        }
+      }
+      // document.querySelectorAll("select").addEventListener("click", )
+      document.querySelectorAll(".specialsButton").forEach(button => button.addEventListener("click", showSpecials))
+      function showSpecials(event)
+      { const button = event.target.closest(".specialsButton")
+        const idNum = button.id
+        const drawerID = "sc" + idNum.match(/\d+/g)[0]
+        const drawer = document.getElementById(drawerID)
+        if (button.classList.contains("rotated"))
+        { button.classList.add("unrotated")
+          button.classList.remove("rotated")
+          drawer.classList.add("hidden")
+          drawer.classList.remove("unhidden")
+        } else
+        { button.classList.add("rotated")
+          button.classList.remove("unrotated")
+          drawer.classList.add("unhidden")
+          drawer.classList.remove("hidden")
         }
       }
     </script>

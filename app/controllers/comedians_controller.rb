@@ -26,7 +26,13 @@ class ComediansController < ApplicationController
     @backgrounds = ['#c00', '#c60', '#c90', '#3c0', '#39f', '#969', '#606']
   end
 
-  def create
+  def new_comedian; end
 
+  def create
+    created = Comedian.new({name: params[:creator][:name], age: params[:creator][:age],
+      home: params[:creator][:home], birthdate: params[:creator][:birthdate],
+      birthplace: params[:creator][:birthplace]})
+    created.save
+    redirect_to '/comedians'
   end
 end
