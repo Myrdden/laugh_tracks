@@ -41,8 +41,9 @@ body {background: #333}
 #list {}
 #grad {background: linear-gradient(to top, orange, yellow, green, cyan, blue, violet); height: 100%; position: absolute; width: 100%;}
 .element {padding: 20px; border: 7.5px solid #333; color: white}
-.info {float: left; width: 58%}
-.photo {float: right; width: 38%}
+.info {float: left; width: 52.5%}
+.photo {float: left; width: 37.5%}
+.deleteButton {float: left; width: 10%}
 .name {font: 24pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: -5px 0px}
 .origin {font: 12pt Segoe UI, Noto Sans, Arial, sans-serif; font-style: italic; color: white; margin: 5px 0px}
 .specials {font: 20pt Segoe UI, Noto Sans, Arial, sans-serif; color: white; margin: 0px 5px; vertical-align: middle}

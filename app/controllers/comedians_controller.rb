@@ -35,4 +35,22 @@ class ComediansController < ApplicationController
     created.save
     redirect_to '/comedians'
   end
+
+  def new_special
+    created = Special.new({comedian: params[:comedian], name: params[:creator][:name],
+      runtime: params[:creator][:runtime], date: params[:creator][:date],
+      location: params[:creator][:location]})
+    created.save
+    redirect_to '/comedians'
+  end
+
+  def delete
+    comedian = Comedian.find_by(name: params[:name])
+    specials = Special.where(comedian: params[:name])
+    specials.each do |special|
+      Special.destroy(special.id)
+    end
+    Comedian.destroy(comedian.id)
+    redirect_to '/comedians'
+  end
 end

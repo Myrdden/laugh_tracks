@@ -1,0 +1,46 @@
+<html>
+  <body>
+    <div style="margin: auto; width: 25%">
+      <div id="topBar">
+        <div id="title">Comedians</div>
+        <a href="../comedians" style="float: left; margin: 25px 15px">
+          <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
+           <g transform="translate(.14376 -291.64)" fill="none">
+            <circle cx="2.6062" cy="294.39" r="2.5" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
+            <g transform="matrix(-.00054972 0 0 -.00054972 6.1244 297.91)" stroke="#000" stroke-linejoin="round" stroke-width="721.96">
+             <path d="m6295 9146c-40-19-286-260-1282-1257l-1232-1234-16-59c-18-61-16-129 5-150 7-7 116-13 343-16l332-5 5-1295c6-1444-1-1325 76-1410 21-23 56-51 78-63 40-22 49-22 542-25l500-3 55 29c39 20 62 41 84 77l30 48 10 1042 27 51c33 63 91 116 154 140 45 17 80 19 394 19s349-2 394-19c63-24 121-77 154-140l27-51 10-1040 25-45c16-28 43-55 74-75l49-30h511c506 0 511 0 552 22 22 12 57 40 78 63 77 85 70-34 76 1410l5 1295 332 5c227 3 336 9 343 16 21 21 23 89 5 150l-16 59-1232 1234c-1336 1337-1275 1281-1387 1281-37 0-71-8-105-24z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="721.96"/>
+            </g>
+           </g>
+          </svg>
+        </a>
+      </div>
+      <div class="topBuffer"></div>
+      <div>
+        <div id="addingHeader">Add Special (<%=params[:comedian]%>):</div>
+        <form style="width: 100%" action="/comedians/addSpecial" method="post">
+          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+          <input type="hidden" name="comedian" value="<%=params[:comedian]%>">
+          <input class="newBar" type="text" name="creator[name]" placeholder="Name..." value="">
+          <br/><br/>
+          <input class="newBar" type="text" name="creator[runtime]" placeholder="Runtime..." value="">
+          <br/><br/>
+          <input class="newBar" type="text" name="creator[date]" placeholder="Date..." value="">
+          <br/><br/>
+          <input class="newBar" type="text" name="creator[location]" placeholder="Location..." value="">
+          <br/><br/><br/>
+          <label style="margin: 0px 360px; float: left">
+            <input type="submit" style="display: none"/>
+            <svg width="11mm" height="11mm" viewBox="0 0 5.5 5.5">
+             <g transform="translate(.14376 -291.64)" fill="none">
+              <circle cx="2.6062" cy="294.39" r="2.5" stroke="#fff" stroke-width=".5" class="buttonCircle"/>
+              <g transform="matrix(-.00054972 0 0 -.00054972 6.1244 297.91)" stroke="#000" stroke-linejoin="round" stroke-width="721.96">
+               <path d="m6295 9146c-40-19-286-260-1282-1257l-1232-1234-16-59c-18-61-16-129 5-150 7-7 116-13 343-16l332-5 5-1295c6-1444-1-1325 76-1410 21-23 56-51 78-63 40-22 49-22 542-25l500-3 55 29c39 20 62 41 84 77l30 48 10 1042 27 51c33 63 91 116 154 140 45 17 80 19 394 19s349-2 394-19c63-24 121-77 154-140l27-51 10-1040 25-45c16-28 43-55 74-75l49-30h511c506 0 511 0 552 22 22 12 57 40 78 63 77 85 70-34 76 1410l5 1295 332 5c227 3 336 9 343 16 21 21 23 89 5 150l-16 59-1232 1234c-1336 1337-1275 1281-1387 1281-37 0-71-8-105-24z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="721.96"/>
+              </g>
+             </g>
+            </svg>
+          </label>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
