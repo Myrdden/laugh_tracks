@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20190501015642) do
     t.integer "runtime"
     t.string "date"
     t.string "location"
+    t.string "image_path"
     t.index ["comedian_id"], name: "index_specials_on_comedian_id"
   end
 
