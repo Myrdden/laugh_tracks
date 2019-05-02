@@ -16,10 +16,10 @@
       </div>
       <div class="topBuffer"></div>
       <div>
-        <div id="addingHeader">Add Special (<%=params[:comedian]%>):</div>
+        <div id="addingHeader">Add Special (<%=@name%>):</div>
         <form style="width: 100%" action="/comedians/addSpecial" method="post">
           <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-          <input type="hidden" name="comedian" value="<%=params[:comedian]%>">
+          <input type="hidden" name="id" value="<%=@id%>">
           <input class="newBar" type="text" name="creator[name]" placeholder="Name..." value="">
           <br/><br/>
           <input class="newBar" type="text" name="creator[runtime]" placeholder="Runtime..." value="">

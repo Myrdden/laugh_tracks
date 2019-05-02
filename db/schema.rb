@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20190501015642) do
   end
 
   create_table "specials", force: :cascade do |t|
-    t.string "comedian"
+    t.bigint "comedian_id"
     t.string "name"
     t.integer "runtime"
     t.string "date"
     t.string "location"
+    t.index ["comedian_id"], name: "index_specials_on_comedian_id"
   end
 
 end
