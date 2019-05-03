@@ -1,4 +1,6 @@
 class ComediansController < ApplicationController
+  def go_home; redirect_to '/comedians' end
+
   def index
     if params[:query]
       if params[:queryType] == "name"
@@ -9,13 +11,10 @@ class ComediansController < ApplicationController
     else
       comedians = Comedian
     end
-    i = 0
-    @total = comedians.count
-    @averageAge = comedians.average(:age)
-    @cities = comedians.get_cities
+    @total, @averageAge, @cities = comedians.prepare
     @comediansLeft = []; @comediansMid = []; @comediansRight = []; @specials = {}
+    i = 0
     comedians.by_name.each do |x|
-      #@specials[x.name] = Special.all.where(:comedian => x.name)
       @specials[x.name] = Special.get_by_id(x.id)
       case i
       when 0; @comediansLeft << x
@@ -44,7 +43,6 @@ class ComediansController < ApplicationController
     @id = Comedian.find(params[:comedian]).id
   end
 
-
   def new_special
     created = Special.new({comedian_id: params[:id], name: params[:creator][:name],
       runtime: params[:creator][:runtime], date: params[:creator][:date],
@@ -55,10 +53,7 @@ class ComediansController < ApplicationController
 
   def delete
     comedian = Comedian.find_by(name: params[:name])
-    specials = Special.where(comedian: params[:name])
-    specials.each do |special|
-      Special.destroy(special.id)
-    end
+    Special.destroy_with_id(comedian.id)
     Comedian.destroy(comedian.id)
     redirect_to '/comedians'
   end

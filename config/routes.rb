@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get '/', to: 'comedians#go_home'
   get '/comedians', to: 'comedians#index'
   get '/comedians/new', to: 'comedians#new_comedian'
   post '/comedians/new', to: 'comedians#create'
